@@ -8,7 +8,7 @@ public class SupermercatApp {
         ArrayList<Producte> carroCompra = new ArrayList<>();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date dataActual = new Date();
-        String nomSupermercat = "Supermercat XYZ";
+        String nomSupermercat = "Supermercat DGD";
 
         Scanner scanner = new Scanner(System.in);
 

@@ -3,73 +3,6 @@ import java.util.Scanner;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-class Producte {
-    String codiBarres;
-    String nom;
-    double preu;
-
-    public Producte(String codiBarres, String nom, double preu) {
-        this.codiBarres = codiBarres;
-        this.nom = nom;
-        this.preu = preu;
-    }
-
-    public String getCodiBarres() {
-        return codiBarres;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public double getPreu() {
-        return preu;
-    }
-}
-
-class Alimentacio extends Producte {
-    Date dataCaducitat;
-
-    public Alimentacio(String codiBarres, String nom, double preu, Date dataCaducitat) {
-        super(codiBarres, nom, preu);
-        this.dataCaducitat = dataCaducitat;
-    }
-
-    public Date getDataCaducitat() {
-        return dataCaducitat;
-    }
-
-    // Calcular preu segons la fórmula
-    public double calcularPreu() {
-        Date dataActual = new Date();
-        long diesCaducitat = (dataCaducitat.getTime() - dataActual.getTime()) / (24 * 60 * 60 * 1000);
-        return preu - preu * (1.0 / (diesCaducitat + 1)) + (preu * 0.1);
-    }
-}
-
-class Tèxtil extends Producte {
-    String composicio;
-
-    public Tèxtil(String codiBarres, String nom, double preu, String composicio) {
-        super(codiBarres, nom, preu);
-        this.composicio = composicio;
-    }
-}
-
-class Electrònica extends Producte {
-    int diesGarantia;
-
-    public Electrònica(String codiBarres, String nom, double preu, int diesGarantia) {
-        super(codiBarres, nom, preu);
-        this.diesGarantia = diesGarantia;
-    }
-
-    // Calcular preu segons la fórmula
-    public double calcularPreu() {
-        return preu + preu * (diesGarantia / 365.0) * 0.1;
-    }
-}
-
 public class SupermercatApp {
     public static void main(String[] args) {
         ArrayList<Producte> carroCompra = new ArrayList<>();
@@ -185,3 +118,72 @@ public class SupermercatApp {
         return count;
     }
 }
+
+
+class Producte {
+    String codiBarres;
+    String nom;
+    double preu;
+
+    public Producte(String codiBarres, String nom, double preu) {
+        this.codiBarres = codiBarres;
+        this.nom = nom;
+        this.preu = preu;
+    }
+
+    public String getCodiBarres() {
+        return codiBarres;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public double getPreu() {
+        return preu;
+    }
+}
+
+class Alimentacio extends Producte {
+    Date dataCaducitat;
+
+    public Alimentacio(String codiBarres, String nom, double preu, Date dataCaducitat) {
+        super(codiBarres, nom, preu);
+        this.dataCaducitat = dataCaducitat;
+    }
+
+    public Date getDataCaducitat() {
+        return dataCaducitat;
+    }
+
+    // Calcular preu segons la fórmula
+    public double calcularPreu() {
+        Date dataActual = new Date();
+        long diesCaducitat = (dataCaducitat.getTime() - dataActual.getTime()) / (24 * 60 * 60 * 1000);
+        return preu - preu * (1.0 / (diesCaducitat + 1)) + (preu * 0.1);
+    }
+}
+
+class Tèxtil extends Producte {
+    String composicio;
+
+    public Tèxtil(String codiBarres, String nom, double preu, String composicio) {
+        super(codiBarres, nom, preu);
+        this.composicio = composicio;
+    }
+}
+
+class Electrònica extends Producte {
+    int diesGarantia;
+
+    public Electrònica(String codiBarres, String nom, double preu, int diesGarantia) {
+        super(codiBarres, nom, preu);
+        this.diesGarantia = diesGarantia;
+    }
+
+    // Calcular preu segons la fórmula
+    public double calcularPreu() {
+        return preu + preu * (diesGarantia / 365.0) * 0.1;
+    }
+}
+

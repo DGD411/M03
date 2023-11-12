@@ -1,0 +1,51 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class MetodoRegulars {
+    public static void main(String[] args) {
+        try {
+            String file = "santako.txt";
+            BufferedReader bfr = new BufferedReader(new FileReader(file));
+
+            String line = "";
+            String papanoel = "\\*<]:-DOo";
+            String reno = ">:o\\)";
+            String follet = "<]:-D$";
+
+            while ((line = bfr.readLine()) != null) {
+                int papanoelcont = Contador(line, papanoel);
+                int renocont = Contador(line, reno);
+                int folletcont = Contador(line, follet);
+
+                StringBuilder salida = new StringBuilder();
+                if (papanoelcont > 0) {
+                    salida.append("Pare Noel (").append(papanoelcont).append(") ");
+                }
+                if (renocont > 0) {
+                    salida.append("Ren (").append(renocont).append(") ");
+                }
+                if (folletcont > 0) {
+                    salida.append("Follet (").append(folletcont).append(") ");
+                }
+                System.out.println(salida.toString().trim());
+            }
+
+            bfr.close();
+        } catch (IOException e) {
+            System.err.println("Error: " + e.getMessage());
+        }
+    }
+
+    public static int Contador(String input, String pattern) {
+        Pattern pattern1 = Pattern.compile(pattern);
+        Matcher matcher = pattern1.matcher(input);
+        int contador = 0;
+        while (matcher.find()) {
+            contador++;
+        }
+        return contador;
+    }
+}

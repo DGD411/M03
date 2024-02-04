@@ -1,0 +1,5 @@
+    spring:
+      datasource:
+        url: jdbc:postgresql://192.168.0.26:5432/miapi
+        username: postgres
+        password: postgres
